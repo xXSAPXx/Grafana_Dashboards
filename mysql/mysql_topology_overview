@@ -1,0 +1,1972 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 5252,
+  "links": [],
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 5,
+      "panels": [],
+      "title": "Sportsbook MySQL DB",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "delasport-prod"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisGridShow": true,
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMax": 100,
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 0,
+        "y": 1
+      },
+      "id": 1,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "min",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "(((count(count(node_cpu_seconds_total{instance=\"db-dela-sb-prod-rpl01\",job=\"node_gce\"}) by (cpu))) - avg(sum by (mode)(rate(node_cpu_seconds_total{mode='idle',instance=\"db-dela-sb-prod-rpl01\",job=\"node_gce\"}[$__rate_interval])))) * 100) / count(count(node_cpu_seconds_total{instance=\"db-dela-sb-prod-rpl01\",job=\"node_gce\"}) by (cpu))",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "rpl01",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "(((count(count(node_cpu_seconds_total{instance=\"db-dela-sb-prod-rpl02\",job=\"node_gce\"}) by (cpu))) - avg(sum by (mode)(rate(node_cpu_seconds_total{mode='idle',instance=\"db-dela-sb-prod-rpl02\",job=\"node_gce\"}[$__rate_interval])))) * 100) / count(count(node_cpu_seconds_total{instance=\"db-dela-sb-prod-rpl02\",job=\"node_gce\"}) by (cpu))",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "rpl02",
+          "range": true,
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "(((count(count(node_cpu_seconds_total{instance=\"db-dela-sb-prod-rpl03\",job=\"node_gce\"}) by (cpu))) - avg(sum by (mode)(rate(node_cpu_seconds_total{mode='idle',instance=\"db-dela-sb-prod-rpl03\",job=\"node_gce\"}[$__rate_interval])))) * 100) / count(count(node_cpu_seconds_total{instance=\"db-dela-sb-prod-rpl03\",job=\"node_gce\"}) by (cpu))",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "rpl03",
+          "range": true,
+          "refId": "D"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "(((count(count(node_cpu_seconds_total{instance=\"db-dela-sb-prod-src\",job=\"node_gce\"}) by (cpu))) - avg(sum by (mode)(rate(node_cpu_seconds_total{mode='idle',instance=\"db-dela-sb-prod-src\",job=\"node_gce\"}[$__rate_interval])))) * 100) / count(count(node_cpu_seconds_total{instance=\"db-dela-sb-prod-src\",job=\"node_gce\"}) by (cpu))",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "sb-prod main",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "CPU Usage",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "delasport-prod"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisGridShow": true,
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMax": 100,
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 12,
+        "y": 1
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "min",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "(((node_memory_MemTotal_bytes{instance=\"db-dela-sb-prod-rpl01\",job=\"node_gce\"} - node_memory_MemFree_bytes{instance=\"db-dela-sb-prod-rpl01\",job=\"node_gce\"}) - node_memory_Cached_bytes{instance=\"db-dela-sb-prod-rpl01\",job=\"node_gce\"} - node_memory_Buffers_bytes{instance=\"db-dela-sb-prod-rpl01\",job=\"node_gce\"} - node_memory_SReclaimable_bytes{instance=\"db-dela-sb-prod-rpl01\",job=\"node_gce\"})  / (node_memory_MemTotal_bytes{instance=\"db-dela-sb-prod-rpl01\",job=\"node_gce\"} )) * 100",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "rpl01",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "(((node_memory_MemTotal_bytes{instance=\"db-dela-sb-prod-rpl02\",job=\"node_gce\"} - node_memory_MemFree_bytes{instance=\"db-dela-sb-prod-rpl02\",job=\"node_gce\"}) - node_memory_Cached_bytes{instance=\"db-dela-sb-prod-rpl02\",job=\"node_gce\"} - node_memory_Buffers_bytes{instance=\"db-dela-sb-prod-rpl02\",job=\"node_gce\"} - node_memory_SReclaimable_bytes{instance=\"db-dela-sb-prod-rpl02\",job=\"node_gce\"} )/ (node_memory_MemTotal_bytes{instance=\"db-dela-sb-prod-rpl02\",job=\"node_gce\"} )) * 100",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "rpl02",
+          "range": true,
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "(((node_memory_MemTotal_bytes{instance=\"db-dela-sb-prod-rpl03\",job=\"node_gce\"} - node_memory_MemFree_bytes{instance=\"db-dela-sb-prod-rpl03\",job=\"node_gce\"}) - node_memory_Cached_bytes{instance=\"db-dela-sb-prod-rpl03\",job=\"node_gce\"} - node_memory_Buffers_bytes{instance=\"db-dela-sb-prod-rpl03\",job=\"node_gce\"} - node_memory_SReclaimable_bytes{instance=\"db-dela-sb-prod-rpl03\",job=\"node_gce\"} )/ (node_memory_MemTotal_bytes{instance=\"db-dela-sb-prod-rpl03\",job=\"node_gce\"} )) * 100",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "rpl03",
+          "range": true,
+          "refId": "D"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "(((node_memory_MemTotal_bytes{instance=\"db-dela-sb-prod-src\",job=\"node_gce\"} - node_memory_MemFree_bytes{instance=\"db-dela-sb-prod-src\",job=\"node_gce\"}) - node_memory_Cached_bytes{instance=\"db-dela-sb-prod-src\",job=\"node_gce\"} - node_memory_Buffers_bytes{instance=\"db-dela-sb-prod-src\",job=\"node_gce\"} - node_memory_SReclaimable_bytes{instance=\"db-dela-sb-prod-src\",job=\"node_gce\"} )/ (node_memory_MemTotal_bytes{instance=\"db-dela-sb-prod-src\",job=\"node_gce\"} )) * 100",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "sb-prod main",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Memory Usage",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "delasport-prod"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisGridShow": true,
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 0,
+          "fieldMinMax": false,
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 0,
+        "y": 7
+      },
+      "id": 8,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "mysql_slave_status_seconds_behind_master{instance=\"db-dela-sb-prod-rpl01\"}",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "rpl01",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "mysql_slave_status_seconds_behind_master{instance=\"db-dela-sb-prod-rpl02\"}",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "rpl02",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "mysql_slave_status_seconds_behind_master{instance=\"db-dela-sb-prod-rpl03\"}",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "rpl03",
+          "range": true,
+          "refId": "C"
+        }
+      ],
+      "title": "Replication Lag",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "delasport-prod"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisGridShow": true,
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "decimals": 0,
+          "fieldMinMax": false,
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 12,
+        "y": 7
+      },
+      "id": 3,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "mysql_slave_status_seconds_behind_master{instance=\"db-dela-sb-prod-malta\"}",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "Malta",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Malta - Replication Lag",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "delasport-prod"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisGridShow": true,
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 0,
+        "y": 13
+      },
+      "id": 14,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "min",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "rate(node_disk_io_time_weighted_seconds_total{instance=\"db-dela-sb-prod-rpl01\", job=\"node_gce\", device=\"sdd\"}[$__rate_interval])",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "rpl01",
+          "range": true,
+          "refId": "B",
+          "useBackend": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "rate(node_disk_io_time_weighted_seconds_total{instance=\"db-dela-sb-prod-rpl02\", job=\"node_gce\", device=\"sdb\"}[$__rate_interval])",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "rpl02",
+          "range": true,
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "rate(node_disk_io_time_weighted_seconds_total{instance=\"db-dela-sb-prod-rpl03\", job=\"node_gce\", device=\"sdb\"}[$__rate_interval])",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "rpl03",
+          "range": true,
+          "refId": "D"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "rate(node_disk_io_time_weighted_seconds_total{instance=\"db-dela-sb-prod-src\", job=\"node_gce\", device=\"sde\"}[$__rate_interval])",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "sb-prod main",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "AVG Queue Depth (/var/lib/mysql)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "delasport-prod"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisGridShow": true,
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 3,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 12,
+        "x": 12,
+        "y": 13
+      },
+      "id": 15,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "min",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "rate(node_disk_discard_time_seconds_total{instance=\"db-dela-sb-prod-src\", job=\"node_gce\", device=\"sdd\"}[$__rate_interval])",
+          "fullMetaSearch": false,
+          "hide": true,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "sb-prod main - {{device}} - discard",
+          "range": true,
+          "refId": "B",
+          "useBackend": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "rate(node_disk_io_time_seconds_total{instance=\"db-dela-sb-prod-rpl01\", job=\"node_gce\", device=\"sdd\"}[$__rate_interval])",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "rpl01 - {{device}} - IO",
+          "range": true,
+          "refId": "C",
+          "useBackend": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "rate(node_disk_discard_time_seconds_total{instance=\"db-dela-sb-prod-rpl01\", job=\"node_gce\", device=\"sdd\"}[$__rate_interval])",
+          "fullMetaSearch": false,
+          "hide": true,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "rpl01 - {{device}} - discard",
+          "range": true,
+          "refId": "D",
+          "useBackend": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "rate(node_disk_io_time_seconds_total{instance=\"db-dela-sb-prod-rpl02\", job=\"node_gce\", device=\"sdb\"}[$__rate_interval])",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "rpl02 - {{device}} - IO",
+          "range": true,
+          "refId": "E",
+          "useBackend": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "rate(node_disk_discard_time_seconds_total{instance=\"db-dela-sb-prod-rpl02\", job=\"node_gce\", device=\"sdb\"}[$__rate_interval])",
+          "fullMetaSearch": false,
+          "hide": true,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "rpl02 - {{device}} - discard",
+          "range": true,
+          "refId": "F",
+          "useBackend": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "rate(node_disk_io_time_seconds_total{instance=\"db-dela-sb-prod-rpl03\", job=\"node_gce\", device=\"sdb\"}[$__rate_interval])",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "rpl03 - {{device}} - IO",
+          "range": true,
+          "refId": "G",
+          "useBackend": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "rate(node_disk_discard_time_seconds_total{instance=\"db-dela-sb-prod-rpl03\", job=\"node_gce\", device=\"sdb\"}[$__rate_interval])",
+          "fullMetaSearch": false,
+          "hide": true,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "rpl03 - {{device}} - discard",
+          "range": true,
+          "refId": "H",
+          "useBackend": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "rate(node_disk_io_time_seconds_total{instance=\"db-dela-sb-prod-src\", job=\"node_gce\", device=\"sde\"}[$__rate_interval])",
+          "fullMetaSearch": false,
+          "hide": false,
+          "includeNullMetadata": true,
+          "instant": false,
+          "legendFormat": "sb-prod main - {{device}} - IO",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
+        }
+      ],
+      "title": "Time spent doing I/Os (/var/lib/mysql)",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 19
+      },
+      "id": 6,
+      "panels": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "#EAB839",
+                    "value": 3500
+                  },
+                  {
+                    "color": "red",
+                    "value": 3800
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 6,
+            "w": 24,
+            "x": 0,
+            "y": 2
+          },
+          "id": 18,
+          "options": {
+            "colorMode": "value",
+            "graphMode": "area",
+            "justifyMode": "auto",
+            "orientation": "horizontal",
+            "percentChangeColorMode": "standard",
+            "reduceOptions": {
+              "calcs": [
+                "lastNotNull"
+              ],
+              "fields": "",
+              "values": false
+            },
+            "showPercentChange": false,
+            "textMode": "auto",
+            "wideLayout": true
+          },
+          "pluginVersion": "11.1.13",
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "delasport-prod"
+              },
+              "editorMode": "code",
+              "expr": "sum(proxysql_client_connections_connected)",
+              "instant": false,
+              "legendFormat": "Frontend Connections",
+              "range": true,
+              "refId": "A"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "delasport-prod"
+              },
+              "editorMode": "code",
+              "expr": "sum(proxysql_connpool_conns{status=\"used\"})",
+              "hide": false,
+              "instant": false,
+              "legendFormat": "Backend Connections (in-use)",
+              "range": true,
+              "refId": "B"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "delasport-prod"
+              },
+              "editorMode": "code",
+              "expr": "sum(proxysql_connpool_conns{status=\"free\"})",
+              "hide": false,
+              "instant": false,
+              "legendFormat": "Backend Connections (free)",
+              "range": true,
+              "refId": "C"
+            }
+          ],
+          "title": "Connection Overview",
+          "type": "stat"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisGridShow": true,
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "axisSoftMax": 4096,
+                "axisSoftMin": 0,
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineStyle": {
+                  "fill": "solid"
+                },
+                "lineWidth": 1,
+                "pointSize": 3,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "decimals": 0,
+              "fieldMinMax": false,
+              "mappings": [],
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 4,
+            "w": 12,
+            "x": 0,
+            "y": 8
+          },
+          "id": 16,
+          "options": {
+            "legend": {
+              "calcs": [
+                "lastNotNull",
+                "min",
+                "max"
+              ],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "delasport-prod"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "proxysql_client_connections_connected",
+              "instant": false,
+              "legendFormat": "{{instance}}",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Frontend Connections",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisGridShow": true,
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "axisSoftMax": 4096,
+                "axisSoftMin": 0,
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 3,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "fieldMinMax": false,
+              "mappings": [],
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 4,
+            "w": 12,
+            "x": 12,
+            "y": 8
+          },
+          "id": 17,
+          "options": {
+            "legend": {
+              "calcs": [
+                "lastNotNull",
+                "min",
+                "max"
+              ],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "delasport-prod"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "proxysql_server_connections_connected",
+              "instant": false,
+              "legendFormat": "{{instance}}",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Backend Connections",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisGridShow": true,
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "axisSoftMax": 100,
+                "axisSoftMin": 0,
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 3,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "fieldMinMax": false,
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "percent"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 4,
+            "w": 12,
+            "x": 0,
+            "y": 12
+          },
+          "id": 4,
+          "options": {
+            "legend": {
+              "calcs": [
+                "lastNotNull",
+                "min",
+                "max"
+              ],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "delasport-prod"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "(((count(count(node_cpu_seconds_total{instance=\"proxysql0-prod\",job=\"node_gce\"}) by (cpu))) - avg(sum by (mode)(rate(node_cpu_seconds_total{mode='idle',instance=\"proxysql0-prod\",job=\"node_gce\"}[$__rate_interval])))) * 100) / count(count(node_cpu_seconds_total{instance=\"proxysql0-prod\",job=\"node_gce\"}) by (cpu))",
+              "instant": false,
+              "legendFormat": "proxysql0-prod",
+              "range": true,
+              "refId": "A"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "delasport-prod"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "(((count(count(node_cpu_seconds_total{instance=\"proxysql1-prod\",job=\"node_gce\"}) by (cpu))) - avg(sum by (mode)(rate(node_cpu_seconds_total{mode='idle',instance=\"proxysql1-prod\",job=\"node_gce\"}[$__rate_interval])))) * 100) / count(count(node_cpu_seconds_total{instance=\"proxysql1-prod\",job=\"node_gce\"}) by (cpu))",
+              "hide": false,
+              "instant": false,
+              "legendFormat": "proxysql1-prod",
+              "range": true,
+              "refId": "B"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "delasport-prod"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "(((count(count(node_cpu_seconds_total{instance=\"proxysql2-prod\",job=\"node_gce\"}) by (cpu))) - avg(sum by (mode)(rate(node_cpu_seconds_total{mode='idle',instance=\"proxysql2-prod\",job=\"node_gce\"}[$__rate_interval])))) * 100) / count(count(node_cpu_seconds_total{instance=\"proxysql2-prod\",job=\"node_gce\"}) by (cpu))",
+              "hide": false,
+              "instant": false,
+              "legendFormat": "proxysql2-prod",
+              "range": true,
+              "refId": "C"
+            }
+          ],
+          "title": "CPU Usage",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisGridShow": true,
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "axisSoftMax": 100,
+                "axisSoftMin": 0,
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 3,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "fieldMinMax": false,
+              "mappings": [],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "percent"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 4,
+            "w": 12,
+            "x": 12,
+            "y": 12
+          },
+          "id": 7,
+          "options": {
+            "legend": {
+              "calcs": [
+                "lastNotNull",
+                "min",
+                "max"
+              ],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "delasport-prod"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "(((node_memory_MemTotal_bytes{instance=\"proxysql0-prod\",job=\"node_gce\"} - node_memory_MemFree_bytes{instance=\"proxysql0-prod\",job=\"node_gce\"}) - node_memory_Cached_bytes{instance=\"proxysql0-prod\",job=\"node_gce\"} - node_memory_Buffers_bytes{instance=\"proxysql0-prod\",job=\"node_gce\"} - node_memory_SReclaimable_bytes{instance=\"proxysql0-prod\",job=\"node_gce\"} ) / (node_memory_MemTotal_bytes{instance=\"proxysql0-prod\",job=\"node_gce\"} )) * 100",
+              "instant": false,
+              "legendFormat": "proxysql0-prod",
+              "range": true,
+              "refId": "A"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "delasport-prod"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "(((node_memory_MemTotal_bytes{instance=\"proxysql1-prod\",job=\"node_gce\"} - node_memory_MemFree_bytes{instance=\"proxysql1-prod\",job=\"node_gce\"}) - node_memory_Cached_bytes{instance=\"proxysql1-prod\",job=\"node_gce\"} - node_memory_Buffers_bytes{instance=\"proxysql1-prod\",job=\"node_gce\"} - node_memory_SReclaimable_bytes{instance=\"proxysql1-prod\",job=\"node_gce\"} ) / (node_memory_MemTotal_bytes{instance=\"proxysql1-prod\",job=\"node_gce\"} )) * 100",
+              "hide": false,
+              "instant": false,
+              "legendFormat": "proxysql1-prod",
+              "range": true,
+              "refId": "B"
+            },
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "delasport-prod"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "(((node_memory_MemTotal_bytes{instance=\"proxysql2-prod\",job=\"node_gce\"} - node_memory_MemFree_bytes{instance=\"proxysql2-prod\",job=\"node_gce\"}) - node_memory_Cached_bytes{instance=\"proxysql2-prod\",job=\"node_gce\"} - node_memory_Buffers_bytes{instance=\"proxysql2-prod\",job=\"node_gce\"} - node_memory_SReclaimable_bytes{instance=\"proxysql2-prod\",job=\"node_gce\"} ) / (node_memory_MemTotal_bytes{instance=\"proxysql2-prod\",job=\"node_gce\"} )) * 100",
+              "hide": false,
+              "instant": false,
+              "legendFormat": "proxysql2-prod",
+              "range": true,
+              "refId": "C"
+            }
+          ],
+          "title": "Memory Usage",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisGridShow": true,
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 3,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "fieldMinMax": false,
+              "mappings": [],
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "µs"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 5,
+            "w": 12,
+            "x": 0,
+            "y": 16
+          },
+          "id": 9,
+          "options": {
+            "legend": {
+              "calcs": [
+                "lastNotNull",
+                "min",
+                "max"
+              ],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "delasport-prod"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "proxysql_connpool_conns_latency_us{endpoint=\"db0.int.delasport.com:3306\"}",
+              "hide": false,
+              "instant": false,
+              "legendFormat": "HG{{hostgroup}} {{instance}}",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Ping Timeout - [sb-prod]",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisGridShow": true,
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 3,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "fieldMinMax": false,
+              "mappings": [],
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "µs"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 5,
+            "w": 12,
+            "x": 12,
+            "y": 16
+          },
+          "id": 10,
+          "options": {
+            "legend": {
+              "calcs": [
+                "lastNotNull",
+                "min",
+                "max"
+              ],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "delasport-prod"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "proxysql_connpool_conns_latency_us{endpoint=\"db-rpl01.int.delasport.com:3306\"}",
+              "hide": false,
+              "instant": false,
+              "legendFormat": "HG{{hostgroup}} {{instance}}",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Ping Timeout - [rpl01]",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisGridShow": true,
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 3,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "fieldMinMax": false,
+              "mappings": [],
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "µs"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 5,
+            "w": 12,
+            "x": 0,
+            "y": 21
+          },
+          "id": 11,
+          "options": {
+            "legend": {
+              "calcs": [
+                "lastNotNull",
+                "min",
+                "max"
+              ],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "delasport-prod"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "proxysql_connpool_conns_latency_us{endpoint=\"db-rpl02.int.delasport.com:3306\"}",
+              "hide": false,
+              "instant": false,
+              "legendFormat": "HG{{hostgroup}} {{instance}}",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Ping Timeout - [rpl02]",
+          "type": "timeseries"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "palette-classic"
+              },
+              "custom": {
+                "axisBorderShow": false,
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
+                "axisGridShow": true,
+                "axisLabel": "",
+                "axisPlacement": "auto",
+                "barAlignment": 0,
+                "drawStyle": "line",
+                "fillOpacity": 0,
+                "gradientMode": "none",
+                "hideFrom": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                },
+                "insertNulls": false,
+                "lineInterpolation": "linear",
+                "lineWidth": 1,
+                "pointSize": 3,
+                "scaleDistribution": {
+                  "type": "linear"
+                },
+                "showPoints": "auto",
+                "spanNulls": false,
+                "stacking": {
+                  "group": "A",
+                  "mode": "none"
+                },
+                "thresholdsStyle": {
+                  "mode": "off"
+                }
+              },
+              "fieldMinMax": false,
+              "mappings": [],
+              "min": 0,
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green"
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              },
+              "unit": "µs"
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 5,
+            "w": 12,
+            "x": 12,
+            "y": 21
+          },
+          "id": 12,
+          "options": {
+            "legend": {
+              "calcs": [
+                "lastNotNull",
+                "min",
+                "max"
+              ],
+              "displayMode": "table",
+              "placement": "right",
+              "showLegend": true
+            },
+            "tooltip": {
+              "mode": "single",
+              "sort": "none"
+            }
+          },
+          "targets": [
+            {
+              "datasource": {
+                "type": "prometheus",
+                "uid": "delasport-prod"
+              },
+              "editorMode": "code",
+              "exemplar": false,
+              "expr": "proxysql_connpool_conns_latency_us{endpoint=\"db-rpl03.int.delasport.com:3306\"}",
+              "hide": false,
+              "instant": false,
+              "legendFormat": "HG{{hostgroup}} {{instance}}",
+              "range": true,
+              "refId": "A"
+            }
+          ],
+          "title": "Ping Timeout - [rpl03]",
+          "type": "timeseries"
+        }
+      ],
+      "title": "Sportsbook ProxySQL",
+      "type": "row"
+    }
+  ],
+  "refresh": "10s",
+  "schemaVersion": 39,
+  "tags": [
+    "MySQL",
+    "SportsBook"
+  ],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "MySQL DBs Stats",
+  "uid": "fe1yko93kf0g0c",
+  "version": 95,
+  "weekStart": ""
+}
