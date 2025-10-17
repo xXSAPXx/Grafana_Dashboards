@@ -1,0 +1,3951 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": "MySQL Data Directory (/var/lib/mysql) Disk Usage\n",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 6763,
+  "links": [],
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 14,
+      "panels": [],
+      "title": "PROD Data Directory Disk Usage (Source Sportsbook and Replicas) ",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "delasport-prod"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds",
+            "seriesBy": "max"
+          },
+          "custom": {
+            "axisBorderShow": true,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": -1,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 90
+              },
+              {
+                "color": "red",
+                "value": 95
+              }
+            ]
+          },
+          "unit": "% Used Space"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 19,
+        "x": 0,
+        "y": 1
+      },
+      "id": 63,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.1.13",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "avg by (instance) (\r\n  100 - min(\r\n    (\r\n      node_filesystem_free_bytes{\r\n        instance=~\"db-dela-sb-prod-src\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      } \r\n      / \r\n      node_filesystem_size_bytes{\r\n        instance=~\"db-dela-sb-prod-src\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      }\r\n    ) * 100\r\n  )\r\n)",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "db-dela-sb-prod-src",
+          "range": true,
+          "refId": "db-dela-sb-prod-src"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  100 - min(\r\n    (\r\n      node_filesystem_free_bytes{\r\n        instance=~\"db-dela-sb-prod-rpl01\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      } \r\n      / \r\n      node_filesystem_size_bytes{\r\n        instance=~\"db-dela-sb-prod-rpl01\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      }\r\n    ) * 100\r\n  )\r\n)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "db-dela-sb-prod-rpl01",
+          "range": true,
+          "refId": "db-dela-sb-prod-rpl01"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  100 - min(\r\n    (\r\n      node_filesystem_free_bytes{\r\n        instance=~\"db-dela-sb-prod-rpl02\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      } \r\n      / \r\n      node_filesystem_size_bytes{\r\n        instance=~\"db-dela-sb-prod-rpl02\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      }\r\n    ) * 100\r\n  )\r\n)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "db-dela-sb-prod-rpl02",
+          "range": true,
+          "refId": "db-dela-sb-prod-rpl02"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  100 - min(\r\n    (\r\n      node_filesystem_free_bytes{\r\n        instance=~\"db-dela-sb-prod-rpl03\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      } \r\n      / \r\n      node_filesystem_size_bytes{\r\n        instance=~\"db-dela-sb-prod-rpl03\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      }\r\n    ) * 100\r\n  )\r\n)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "db-dela-sb-prod-rpl03",
+          "range": true,
+          "refId": "db-dela-sb-prod-rpl03"
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "delasport-prod"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "decgbytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "USED SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Used Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "FREE SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Free Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "TOTAL SPACE GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Space"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 19,
+        "y": 1
+      },
+      "id": 45,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "vertical",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 13,
+          "valueSize": 16
+        },
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.13",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-sb-prod-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "TOTAL SPACE GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-sb-prod-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-sb-prod-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "USED SPACE IN GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-sb-prod-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "FREE SPACE IN GBs"
+        }
+      ],
+      "title": "db-dela-sb-prod-src",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "delasport-prod"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "decgbytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "USED SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Used Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "FREE SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Free Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "TOTAL SPACE GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Space"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 19,
+        "y": 3
+      },
+      "id": 48,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "vertical",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 13,
+          "valueSize": 16
+        },
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.13",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-sb-prod-rpl01\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "TOTAL SPACE GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-sb-prod-rpl01\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-sb-prod-rpl01\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "USED SPACE IN GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-sb-prod-rpl01\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "FREE SPACE IN GBs"
+        }
+      ],
+      "title": "db-dela-sb-prod-rpl01",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "delasport-prod"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "decgbytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "USED SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Used Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "FREE SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Free Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "TOTAL SPACE GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Space"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 19,
+        "y": 5
+      },
+      "id": 46,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "vertical",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 13,
+          "valueSize": 16
+        },
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.13",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-sb-prod-rpl02\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "TOTAL SPACE GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-sb-prod-rpl02\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-sb-prod-rpl02\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "USED SPACE IN GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-sb-prod-rpl02\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "FREE SPACE IN GBs"
+        }
+      ],
+      "title": "db-dela-sb-prod-rpl02",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "delasport-prod"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "decgbytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "USED SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Used Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "FREE SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Free Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "TOTAL SPACE GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Space"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 19,
+        "y": 7
+      },
+      "id": 47,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "vertical",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 13,
+          "valueSize": 16
+        },
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.13",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-sb-prod-rpl03\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "TOTAL SPACE GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-sb-prod-rpl03\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-sb-prod-rpl03\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "USED SPACE IN GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-sb-prod-rpl03\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "FREE SPACE IN GBs"
+        }
+      ],
+      "title": "db-dela-sb-prod-rpl03",
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 11
+      },
+      "id": 9,
+      "panels": [],
+      "title": "PROD Data Directory Disk Usage (PSA / TMS / Gamification / Fansbet /Tracker)",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "delasport-prod"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds",
+            "seriesBy": "max"
+          },
+          "custom": {
+            "axisBorderShow": true,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": -1,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 80
+              },
+              {
+                "color": "red",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "% Used Space"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 19,
+        "x": 0,
+        "y": 12
+      },
+      "id": 61,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "sortBy": "Last *",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.1.13",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "avg by (instance) (\r\n  100 - min(\r\n    (\r\n      node_filesystem_free_bytes{\r\n        instance=~\"db-dela-gamification-prod-src\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      } \r\n      / \r\n      node_filesystem_size_bytes{\r\n        instance=~\"db-dela-gamification-prod-src\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      }\r\n    ) * 100\r\n  )\r\n)",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "db-dela-gamification-prod-src",
+          "range": true,
+          "refId": "db-dela-gamification-prod-src"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  100 - min(\r\n    (\r\n      node_filesystem_free_bytes{\r\n        instance=~\"db-tms-prod\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      } \r\n      / \r\n      node_filesystem_size_bytes{\r\n        instance=~\"db-tms-prod\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      }\r\n    ) * 100\r\n  )\r\n)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "db-tms-prod",
+          "range": true,
+          "refId": "db-tms-prod"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  100 - min(\r\n    (\r\n      node_filesystem_free_bytes{\r\n        instance=~\"db-dela-psa-prod-src\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      } \r\n      / \r\n      node_filesystem_size_bytes{\r\n        instance=~\"db-dela-psa-prod-src\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      }\r\n    ) * 100\r\n  )\r\n)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "db-dela-psa-prod-src",
+          "range": true,
+          "refId": "db-dela-psa-prod-src"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  100 - min(\r\n    (\r\n      node_filesystem_free_bytes{\r\n        instance=~\"db-dela-fansbet-prod-src\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      } \r\n      / \r\n      node_filesystem_size_bytes{\r\n        instance=~\"db-dela-fansbet-prod-src\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      }\r\n    ) * 100\r\n  )\r\n)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "db-dela-fansbet-prod-src",
+          "range": true,
+          "refId": "db-dela-fansbet-prod-src"
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "delasport-prod"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "decgbytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "USED SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Used Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "FREE SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Free Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "TOTAL SPACE GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Space"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 19,
+        "y": 12
+      },
+      "id": 41,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "vertical",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 13,
+          "valueSize": 16
+        },
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.13",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-psa-prod-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "TOTAL SPACE GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-psa-prod-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-psa-prod-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "USED SPACE IN GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-psa-prod-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "FREE SPACE IN GBs"
+        }
+      ],
+      "title": "db-dela-psa-prod-src",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "delasport-prod"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "decgbytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "USED SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Used Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "FREE SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Free Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "TOTAL SPACE GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Space"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 19,
+        "y": 14
+      },
+      "id": 42,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "vertical",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 13,
+          "valueSize": 16
+        },
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.13",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-tms-prod\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "TOTAL SPACE GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-tms-prod\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-tms-prod\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "USED SPACE IN GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-tms-prod\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "FREE SPACE IN GBs"
+        }
+      ],
+      "title": "db-tms-prod",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "delasport-prod"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "decgbytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "USED SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Used Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "FREE SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Free Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "TOTAL SPACE GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Space"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 19,
+        "y": 16
+      },
+      "id": 43,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "vertical",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 13,
+          "valueSize": 16
+        },
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.13",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-gamification-prod-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "TOTAL SPACE GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-gamification-prod-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-gamification-prod-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "USED SPACE IN GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-gamification-prod-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "FREE SPACE IN GBs"
+        }
+      ],
+      "title": "db-dela-gamification-prod-src",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "delasport-prod"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "decgbytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "USED SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Used Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "FREE SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Free Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "TOTAL SPACE GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Space"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 19,
+        "y": 18
+      },
+      "id": 44,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "vertical",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 13,
+          "valueSize": 16
+        },
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.13",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-fansbet-prod-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "TOTAL SPACE GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-fansbet-prod-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-fansbet-prod-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "USED SPACE IN GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-fansbet-prod-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "FREE SPACE IN GBs"
+        }
+      ],
+      "title": "db-dela-fansbet-prod-src",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "tracker-prod"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds",
+            "seriesBy": "max"
+          },
+          "custom": {
+            "axisBorderShow": true,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": -1,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 80
+              },
+              {
+                "color": "red",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "% Used Space"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 19,
+        "x": 0,
+        "y": 20
+      },
+      "id": 62,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "sortBy": "Last *",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.1.13",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "tracker-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  100 - min(\r\n    (\r\n      node_filesystem_free_bytes{\r\n        instance=~\"db-dela-tracker-prod-src\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      } \r\n      / \r\n      node_filesystem_size_bytes{\r\n        instance=~\"db-dela-tracker-prod-src\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      }\r\n    ) * 100\r\n  )\r\n)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "db-dela-tracker-prod-src",
+          "range": true,
+          "refId": "db-dela-tracker-prod-src"
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "tracker-prod"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "decgbytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "USED SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Used Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "FREE SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Free Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "TOTAL SPACE GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Space"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 19,
+        "y": 20
+      },
+      "id": 50,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "vertical",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 13,
+          "valueSize": 16
+        },
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.13",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "tracker-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-tracker-prod-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "TOTAL SPACE GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "tracker-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-tracker-prod-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-tracker-prod-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "USED SPACE IN GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "tracker-prod"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-tracker-prod-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "FREE SPACE IN GBs"
+        }
+      ],
+      "title": "db-dela-tracker-prod-src",
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 26
+      },
+      "id": 8,
+      "panels": [],
+      "title": "STG Data Directory Disk Usage",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "sb-stg"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds",
+            "seriesBy": "max"
+          },
+          "custom": {
+            "axisBorderShow": true,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": -1,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 80
+              },
+              {
+                "color": "red",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "% Used Space"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 19,
+        "x": 0,
+        "y": 27
+      },
+      "id": 60,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.1.13",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "sb-stg"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "avg by (instance) (\r\n  100 - min(\r\n    (\r\n      node_filesystem_free_bytes{\r\n        instance=~\"db-dela-sb-stg-src\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      } \r\n      / \r\n      node_filesystem_size_bytes{\r\n        instance=~\"db-dela-sb-stg-src\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      }\r\n    ) * 100\r\n  )\r\n)",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "db-dela-sb-stg-src",
+          "range": true,
+          "refId": "db-dela-sb-stg-src"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "sb-stg"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  100 - min(\r\n    (\r\n      node_filesystem_free_bytes{\r\n        instance=~\"db-dela-psa-stg-src\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      } \r\n      / \r\n      node_filesystem_size_bytes{\r\n        instance=~\"db-dela-psa-stg-src\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      }\r\n    ) * 100\r\n  )\r\n)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "db-dela-psa-stg-src",
+          "range": true,
+          "refId": "db-dela-psa-stg-src"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "sb-stg"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  100 - min(\r\n    (\r\n      node_filesystem_free_bytes{\r\n        instance=~\"db-dela-gamification-stg-src\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      } \r\n      / \r\n      node_filesystem_size_bytes{\r\n        instance=~\"db-dela-gamification-stg-src\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      }\r\n    ) * 100\r\n  )\r\n)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "db-dela-gamification-stg-src",
+          "range": true,
+          "refId": "db-dela-gamification-stg-src"
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "sb-stg"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "decgbytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "USED SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Used Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "FREE SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Free Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "TOTAL SPACE GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Space"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 19,
+        "y": 27
+      },
+      "id": 38,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "vertical",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 13,
+          "valueSize": 16
+        },
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.13",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "sb-stg"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-sb-stg-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "TOTAL SPACE GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "sb-stg"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-sb-stg-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-sb-stg-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "USED SPACE IN GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "sb-stg"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-sb-stg-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "FREE SPACE IN GBs"
+        }
+      ],
+      "title": "db-dela-sb-stg-src",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "sb-stg"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "decgbytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "USED SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Used Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "FREE SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Free Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "TOTAL SPACE GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Space"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 19,
+        "y": 29
+      },
+      "id": 39,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "vertical",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 13,
+          "valueSize": 16
+        },
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.13",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "sb-stg"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-psa-stg-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "TOTAL SPACE GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "sb-stg"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-psa-stg-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-psa-stg-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "USED SPACE IN GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "sb-stg"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-psa-stg-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "FREE SPACE IN GBs"
+        }
+      ],
+      "title": "db-dela-psa-stg-src",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "sb-stg"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "decgbytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "USED SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Used Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "FREE SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Free Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "TOTAL SPACE GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Space"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 19,
+        "y": 31
+      },
+      "id": 40,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "vertical",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 13,
+          "valueSize": 16
+        },
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.13",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "sb-stg"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-gamification-stg-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "TOTAL SPACE GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "sb-stg"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-gamification-stg-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-gamification-stg-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "USED SPACE IN GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "sb-stg"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-gamification-stg-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "FREE SPACE IN GBs"
+        }
+      ],
+      "title": "db-dela-gamification-stg-src",
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 37
+      },
+      "id": 3,
+      "panels": [],
+      "title": "TEST Data Directory Disk Usage",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "delasport-test"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds",
+            "seriesBy": "max"
+          },
+          "custom": {
+            "axisBorderShow": true,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": -1,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 80
+              },
+              {
+                "color": "red",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "% Used Space"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 19,
+        "x": 0,
+        "y": 38
+      },
+      "id": 59,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.1.13",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-test"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "avg by (instance) (\r\n  100 - min(\r\n    (\r\n      node_filesystem_free_bytes{\r\n        instance=~\"db-dela-sb-test-src\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      } \r\n      / \r\n      node_filesystem_size_bytes{\r\n        instance=~\"db-dela-sb-test-src\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      }\r\n    ) * 100\r\n  )\r\n)",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "db-dela-sb-test-src",
+          "range": true,
+          "refId": "db-dela-sb-test-src"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-test"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  100 - min(\r\n    (\r\n      node_filesystem_free_bytes{\r\n        instance=~\"db-dela-sb-test-rpl01\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      } \r\n      / \r\n      node_filesystem_size_bytes{\r\n        instance=~\"db-dela-sb-test-rpl01\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      }\r\n    ) * 100\r\n  )\r\n)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "db-dela-sb-test-rpl01",
+          "range": true,
+          "refId": "db-dela-sb-test-rpl01"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-test"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  100 - min(\r\n    (\r\n      node_filesystem_free_bytes{\r\n        instance=~\"db-tms-test\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      } \r\n      / \r\n      node_filesystem_size_bytes{\r\n        instance=~\"db-tms-test\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      }\r\n    ) * 100\r\n  )\r\n)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "db-tms-test",
+          "range": true,
+          "refId": "db-tms-test"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-test"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  100 - min(\r\n    (\r\n      node_filesystem_free_bytes{\r\n        instance=~\"db-dela-psa-test-src\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      } \r\n      / \r\n      node_filesystem_size_bytes{\r\n        instance=~\"db-dela-psa-test-src\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      }\r\n    ) * 100\r\n  )\r\n)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "db-dela-psa-test-src",
+          "range": true,
+          "refId": "db-dela-psa-test-src"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-test"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  100 - min(\r\n    (\r\n      node_filesystem_free_bytes{\r\n        instance=~\"db-dela-gamification-test-src\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      } \r\n      / \r\n      node_filesystem_size_bytes{\r\n        instance=~\"db-dela-gamification-test-src\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      }\r\n    ) * 100\r\n  )\r\n)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "db-dela-gamification-test-src",
+          "range": true,
+          "refId": "db-dela-gamification-test-src"
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "delasport-test"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "decgbytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "USED SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Used Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "FREE SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Free Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "TOTAL SPACE GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Space"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 19,
+        "y": 38
+      },
+      "id": 33,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "vertical",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 13,
+          "valueSize": 16
+        },
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.13",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-test"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-sb-test-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "TOTAL SPACE GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-test"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-sb-test-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-sb-test-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "USED SPACE IN GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-test"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-sb-test-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "FREE SPACE IN GBs"
+        }
+      ],
+      "title": "db-dela-sb-test-src",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "delasport-test"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "decgbytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "USED SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Used Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "FREE SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Free Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "TOTAL SPACE GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Space"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 19,
+        "y": 40
+      },
+      "id": 34,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "vertical",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 13,
+          "valueSize": 16
+        },
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.13",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-test"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-sb-test-rpl01\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "TOTAL SPACE GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-test"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-sb-test-rpl01\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-sb-test-rpl01\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "USED SPACE IN GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-test"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-sb-test-rpl01\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "FREE SPACE IN GBs"
+        }
+      ],
+      "title": "db-dela-sb-test-rpl01",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "delasport-test"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "decgbytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "USED SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Used Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "FREE SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Free Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "TOTAL SPACE GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Space"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 19,
+        "y": 42
+      },
+      "id": 35,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "vertical",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 13,
+          "valueSize": 16
+        },
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.13",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-test"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-psa-test-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "TOTAL SPACE GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-test"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-psa-test-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-psa-test-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "USED SPACE IN GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-test"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-psa-test-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "FREE SPACE IN GBs"
+        }
+      ],
+      "title": "db-dela-psa-test-src",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "delasport-test"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "decgbytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "USED SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Used Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "FREE SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Free Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "TOTAL SPACE GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Space"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 19,
+        "y": 44
+      },
+      "id": 37,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "vertical",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 13,
+          "valueSize": 16
+        },
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.13",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-test"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-gamification-test-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "TOTAL SPACE GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-test"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-gamification-test-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-gamification-test-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "USED SPACE IN GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-test"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-gamification-test-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "FREE SPACE IN GBs"
+        }
+      ],
+      "title": "db-dela-gamification-test-src",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "delasport-test"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "decgbytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "USED SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Used Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "FREE SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Free Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "TOTAL SPACE GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Space"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 19,
+        "y": 46
+      },
+      "id": 36,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "vertical",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 13,
+          "valueSize": 16
+        },
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.13",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-test"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-tms-test\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "TOTAL SPACE GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-test"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-tms-test\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-tms-test\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "USED SPACE IN GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-test"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-tms-test\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "FREE SPACE IN GBs"
+        }
+      ],
+      "title": "db-tms-test",
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 48
+      },
+      "id": 2,
+      "panels": [],
+      "title": "DEV Data Directory Disk Usage",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "delasport-dev"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds",
+            "seriesBy": "max"
+          },
+          "custom": {
+            "axisBorderShow": true,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": -1,
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "area"
+            }
+          },
+          "fieldMinMax": false,
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 80
+              },
+              {
+                "color": "red",
+                "value": 90
+              }
+            ]
+          },
+          "unit": "% Used Space"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 19,
+        "x": 0,
+        "y": 49
+      },
+      "id": 53,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.1.13",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-dev"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "avg by (instance) (\r\n  100 - min(\r\n    (\r\n      node_filesystem_free_bytes{\r\n        instance=~\"db-dela-sb-dev-src\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      } \r\n      / \r\n      node_filesystem_size_bytes{\r\n        instance=~\"db-dela-sb-dev-src\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      }\r\n    ) * 100\r\n  )\r\n)",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "db-dela-sb-dev-src",
+          "range": true,
+          "refId": "db-dela-sb-dev-src"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-dev"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  100 - min(\r\n    (\r\n      node_filesystem_free_bytes{\r\n        instance=~\"db-dela-sb-dev-rpl01\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      } \r\n      / \r\n      node_filesystem_size_bytes{\r\n        instance=~\"db-dela-sb-dev-rpl01\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      }\r\n    ) * 100\r\n  )\r\n)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "db-dela-sb-dev-rpl01",
+          "range": true,
+          "refId": "db-dela-sb-dev-rpl01"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-dev"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  100 - min(\r\n    (\r\n      node_filesystem_free_bytes{\r\n        instance=~\"db-tms-dev\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      } \r\n      / \r\n      node_filesystem_size_bytes{\r\n        instance=~\"db-tms-dev\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      }\r\n    ) * 100\r\n  )\r\n)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "db-tms-dev",
+          "range": true,
+          "refId": "db-tms-dev"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-dev"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  100 - min(\r\n    (\r\n      node_filesystem_free_bytes{\r\n        instance=~\"db-dela-psa-dev-src\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      } \r\n      / \r\n      node_filesystem_size_bytes{\r\n        instance=~\"db-dela-psa-dev-src\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      }\r\n    ) * 100\r\n  )\r\n)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "db-dela-psa-dev-src",
+          "range": true,
+          "refId": "db-dela-psa-dev-src"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-dev"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  100 - min(\r\n    (\r\n      node_filesystem_free_bytes{\r\n        instance=~\"db-dela-gamification-dev-src\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      } \r\n      / \r\n      node_filesystem_size_bytes{\r\n        instance=~\"db-dela-gamification-dev-src\",\r\n        fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n        mountpoint=\"/var/lib/mysql\"\r\n      }\r\n    ) * 100\r\n  )\r\n)",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "db-dela-gamification-dev-src",
+          "range": true,
+          "refId": "db-dela-gamification-dev-src"
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "delasport-dev"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "decgbytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "USED SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Used Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "FREE SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Free Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "TOTAL SPACE GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Space"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 19,
+        "y": 49
+      },
+      "id": 54,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "vertical",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 13,
+          "valueSize": 16
+        },
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.13",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-dev"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-sb-dev-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "TOTAL SPACE GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-dev"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-sb-dev-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-sb-dev-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "USED SPACE IN GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-dev"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-sb-dev-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "FREE SPACE IN GBs"
+        }
+      ],
+      "title": "db-dela-sb-dev-src",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "delasport-dev"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "decgbytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "USED SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Used Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "FREE SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Free Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "TOTAL SPACE GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Space"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 19,
+        "y": 51
+      },
+      "id": 55,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "vertical",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 13,
+          "valueSize": 16
+        },
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.13",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-dev"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-sb-dev-rpl01\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "TOTAL SPACE GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-dev"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-sb-dev-rpl01\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-sb-dev-rpl01\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "USED SPACE IN GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-dev"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-sb-dev-rpl01\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "FREE SPACE IN GBs"
+        }
+      ],
+      "title": "db-dela-sb-dev-rpl01",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "delasport-dev"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "decgbytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "USED SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Used Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "FREE SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Free Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "TOTAL SPACE GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Space"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 19,
+        "y": 53
+      },
+      "id": 56,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "vertical",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 13,
+          "valueSize": 16
+        },
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.13",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-dev"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-psa-dev-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "TOTAL SPACE GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-dev"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-psa-dev-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-psa-dev-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "USED SPACE IN GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-dev"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-psa-dev-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "FREE SPACE IN GBs"
+        }
+      ],
+      "title": "db-dela-psa-dev-src",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "delasport-dev"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "decgbytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "USED SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Used Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "FREE SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Free Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "TOTAL SPACE GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Space"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 19,
+        "y": 55
+      },
+      "id": 58,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "vertical",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 13,
+          "valueSize": 16
+        },
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.13",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-dev"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-gamification-dev-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "TOTAL SPACE GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-dev"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-gamification-dev-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-gamification-dev-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "USED SPACE IN GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-dev"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-gamification-dev-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "FREE SPACE IN GBs"
+        }
+      ],
+      "title": "db-dela-gamification-dev-src",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "delasport-dev"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unit": "decgbytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "USED SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Used Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "FREE SPACE IN GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Free Space"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "TOTAL SPACE GBs"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Total Space"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 2,
+        "w": 5,
+        "x": 19,
+        "y": 57
+      },
+      "id": 57,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "vertical",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 13,
+          "valueSize": 16
+        },
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.1.13",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-dev"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-tms-dev\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "TOTAL SPACE GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-dev"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-tms-dev\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-tms-dev\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "USED SPACE IN GBs"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "delasport-dev"
+          },
+          "editorMode": "code",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-tms-dev\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "FREE SPACE IN GBs"
+        }
+      ],
+      "title": "db-tms-dev",
+      "type": "stat"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 39,
+  "tags": [
+    "MySQL"
+  ],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-2d",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "MySQL Data Directory Disk Usage 2.0",
+  "uid": "fe77afkzevmyof214dsafcsq",
+  "version": 28,
+  "weekStart": ""
+}
