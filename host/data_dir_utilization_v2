@@ -209,7 +209,7 @@
               }
             ]
           },
-          "unit": "decgbytes"
+          "unit": "bytes"
         },
         "overrides": [
           {
@@ -286,7 +286,7 @@
             "uid": "delasport-prod"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-sb-prod-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-sb-prod-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -299,7 +299,7 @@
             "uid": "delasport-prod"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-sb-prod-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-sb-prod-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-sb-prod-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-sb-prod-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) \r\n)",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -311,7 +311,7 @@
             "uid": "delasport-prod"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-sb-prod-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-sb-prod-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } \r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -343,7 +343,7 @@
               }
             ]
           },
-          "unit": "decgbytes"
+          "unit": "bytes"
         },
         "overrides": [
           {
@@ -420,7 +420,7 @@
             "uid": "delasport-prod"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-sb-prod-rpl01\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-sb-prod-rpl01\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } \r\n)\r\n\r\n\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -433,7 +433,7 @@
             "uid": "delasport-prod"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-sb-prod-rpl01\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-sb-prod-rpl01\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-sb-prod-rpl01\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-sb-prod-rpl01\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) \r\n)",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -445,7 +445,7 @@
             "uid": "delasport-prod"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-sb-prod-rpl01\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-sb-prod-rpl01\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -477,7 +477,7 @@
               }
             ]
           },
-          "unit": "decgbytes"
+          "unit": "bytes"
         },
         "overrides": [
           {
@@ -554,7 +554,7 @@
             "uid": "delasport-prod"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-sb-prod-rpl02\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-sb-prod-rpl02\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -567,7 +567,7 @@
             "uid": "delasport-prod"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-sb-prod-rpl02\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-sb-prod-rpl02\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-sb-prod-rpl02\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-sb-prod-rpl02\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  )\r\n)",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -579,7 +579,7 @@
             "uid": "delasport-prod"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-sb-prod-rpl02\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-sb-prod-rpl02\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -611,7 +611,7 @@
               }
             ]
           },
-          "unit": "decgbytes"
+          "unit": "bytes"
         },
         "overrides": [
           {
@@ -688,7 +688,7 @@
             "uid": "delasport-prod"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-sb-prod-rpl03\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-sb-prod-rpl03\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -701,7 +701,7 @@
             "uid": "delasport-prod"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-sb-prod-rpl03\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-sb-prod-rpl03\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-sb-prod-rpl03\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-sb-prod-rpl03\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  )\r\n)",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -713,7 +713,7 @@
             "uid": "delasport-prod"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-sb-prod-rpl03\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-sb-prod-rpl03\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -913,7 +913,7 @@
               }
             ]
           },
-          "unit": "decgbytes"
+          "unit": "bytes"
         },
         "overrides": [
           {
@@ -990,7 +990,7 @@
             "uid": "delasport-prod"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-psa-prod-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-psa-prod-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -1003,7 +1003,7 @@
             "uid": "delasport-prod"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-psa-prod-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-psa-prod-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-psa-prod-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-psa-prod-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  )\r\n)",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -1015,7 +1015,7 @@
             "uid": "delasport-prod"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-psa-prod-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-psa-prod-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -1047,7 +1047,7 @@
               }
             ]
           },
-          "unit": "decgbytes"
+          "unit": "bytes"
         },
         "overrides": [
           {
@@ -1124,7 +1124,7 @@
             "uid": "delasport-prod"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-tms-prod\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-tms-prod\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -1137,7 +1137,7 @@
             "uid": "delasport-prod"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-tms-prod\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-tms-prod\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-tms-prod\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-tms-prod\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  )\r\n)",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -1149,7 +1149,7 @@
             "uid": "delasport-prod"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-tms-prod\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-tms-prod\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -1181,7 +1181,7 @@
               }
             ]
           },
-          "unit": "decgbytes"
+          "unit": "bytes"
         },
         "overrides": [
           {
@@ -1258,7 +1258,7 @@
             "uid": "delasport-prod"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-gamification-prod-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-gamification-prod-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -1271,7 +1271,7 @@
             "uid": "delasport-prod"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-gamification-prod-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-gamification-prod-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-gamification-prod-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-gamification-prod-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  )\r\n)",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -1283,7 +1283,7 @@
             "uid": "delasport-prod"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-gamification-prod-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-gamification-prod-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -1315,7 +1315,7 @@
               }
             ]
           },
-          "unit": "decgbytes"
+          "unit": "bytes"
         },
         "overrides": [
           {
@@ -1392,7 +1392,7 @@
             "uid": "delasport-prod"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-fansbet-prod-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-fansbet-prod-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -1405,7 +1405,7 @@
             "uid": "delasport-prod"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-fansbet-prod-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-fansbet-prod-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-fansbet-prod-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-fansbet-prod-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  )\r\n)",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -1417,7 +1417,7 @@
             "uid": "delasport-prod"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-fansbet-prod-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-fansbet-prod-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -1563,7 +1563,7 @@
               }
             ]
           },
-          "unit": "decgbytes"
+          "unit": "bytes"
         },
         "overrides": [
           {
@@ -1640,7 +1640,7 @@
             "uid": "tracker-prod"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-tracker-prod-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-tracker-prod-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } \r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -1653,7 +1653,7 @@
             "uid": "tracker-prod"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-tracker-prod-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-tracker-prod-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-tracker-prod-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-tracker-prod-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  )\r\n)",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -1665,7 +1665,7 @@
             "uid": "tracker-prod"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-tracker-prod-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-tracker-prod-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -1745,8 +1745,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#EAB839",
@@ -1845,12 +1844,11 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue",
-                "value": null
+                "color": "blue"
               }
             ]
           },
-          "unit": "decgbytes"
+          "unit": "bytes"
         },
         "overrides": [
           {
@@ -1927,7 +1925,7 @@
             "uid": "sb-stg"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-sb-stg-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-sb-stg-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } \r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -1940,7 +1938,7 @@
             "uid": "sb-stg"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-sb-stg-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-sb-stg-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-sb-stg-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-sb-stg-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  )\r\n)",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -1952,7 +1950,7 @@
             "uid": "sb-stg"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-sb-stg-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-sb-stg-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -1979,12 +1977,11 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue",
-                "value": null
+                "color": "blue"
               }
             ]
           },
-          "unit": "decgbytes"
+          "unit": "bytes"
         },
         "overrides": [
           {
@@ -2061,7 +2058,7 @@
             "uid": "sb-stg"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-psa-stg-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-psa-stg-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -2074,7 +2071,7 @@
             "uid": "sb-stg"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-psa-stg-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-psa-stg-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-psa-stg-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-psa-stg-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) \r\n)",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -2086,7 +2083,7 @@
             "uid": "sb-stg"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-psa-stg-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-psa-stg-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -2113,12 +2110,11 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue",
-                "value": null
+                "color": "blue"
               }
             ]
           },
-          "unit": "decgbytes"
+          "unit": "bytes"
         },
         "overrides": [
           {
@@ -2195,7 +2191,7 @@
             "uid": "sb-stg"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-gamification-stg-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-gamification-stg-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } \r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -2208,7 +2204,7 @@
             "uid": "sb-stg"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-gamification-stg-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-gamification-stg-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-gamification-stg-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-gamification-stg-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  )\r\n)",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -2220,7 +2216,7 @@
             "uid": "sb-stg"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-gamification-stg-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-gamification-stg-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -2300,8 +2296,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#EAB839",
@@ -2426,12 +2421,11 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue",
-                "value": null
+                "color": "blue"
               }
             ]
           },
-          "unit": "decgbytes"
+          "unit": "bytes"
         },
         "overrides": [
           {
@@ -2508,7 +2502,7 @@
             "uid": "delasport-test"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-sb-test-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-sb-test-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -2521,7 +2515,7 @@
             "uid": "delasport-test"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-sb-test-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-sb-test-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-sb-test-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-sb-test-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  )\r\n)",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -2533,7 +2527,7 @@
             "uid": "delasport-test"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-sb-test-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-sb-test-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } \r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -2560,12 +2554,11 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue",
-                "value": null
+                "color": "blue"
               }
             ]
           },
-          "unit": "decgbytes"
+          "unit": "bytes"
         },
         "overrides": [
           {
@@ -2642,7 +2635,7 @@
             "uid": "delasport-test"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-sb-test-rpl01\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-sb-test-rpl01\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -2655,7 +2648,7 @@
             "uid": "delasport-test"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-sb-test-rpl01\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-sb-test-rpl01\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-sb-test-rpl01\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-sb-test-rpl01\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) \r\n)",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -2667,7 +2660,7 @@
             "uid": "delasport-test"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-sb-test-rpl01\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-sb-test-rpl01\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -2694,12 +2687,11 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue",
-                "value": null
+                "color": "blue"
               }
             ]
           },
-          "unit": "decgbytes"
+          "unit": "bytes"
         },
         "overrides": [
           {
@@ -2776,7 +2768,7 @@
             "uid": "delasport-test"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-psa-test-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-psa-test-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -2789,7 +2781,7 @@
             "uid": "delasport-test"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-psa-test-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-psa-test-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-psa-test-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-psa-test-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) \r\n)",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -2801,7 +2793,7 @@
             "uid": "delasport-test"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-psa-test-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-psa-test-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -2828,12 +2820,11 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue",
-                "value": null
+                "color": "blue"
               }
             ]
           },
-          "unit": "decgbytes"
+          "unit": "bytes"
         },
         "overrides": [
           {
@@ -2910,7 +2901,7 @@
             "uid": "delasport-test"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-gamification-test-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-gamification-test-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -2923,7 +2914,7 @@
             "uid": "delasport-test"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-gamification-test-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-gamification-test-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-gamification-test-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-gamification-test-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  )\r\n)",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -2935,7 +2926,7 @@
             "uid": "delasport-test"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-gamification-test-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-gamification-test-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -2962,12 +2953,11 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue",
-                "value": null
+                "color": "blue"
               }
             ]
           },
-          "unit": "decgbytes"
+          "unit": "bytes"
         },
         "overrides": [
           {
@@ -3044,7 +3034,7 @@
             "uid": "delasport-test"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-tms-test\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-tms-test\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } \r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -3057,7 +3047,7 @@
             "uid": "delasport-test"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-tms-test\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-tms-test\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-tms-test\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-tms-test\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  )\r\n)",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -3069,7 +3059,7 @@
             "uid": "delasport-test"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-tms-test\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-tms-test\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } \r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -3149,8 +3139,7 @@
             "mode": "percentage",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "#EAB839",
@@ -3275,12 +3264,11 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue",
-                "value": null
+                "color": "blue"
               }
             ]
           },
-          "unit": "decgbytes"
+          "unit": "bytes"
         },
         "overrides": [
           {
@@ -3357,7 +3345,7 @@
             "uid": "delasport-dev"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-sb-dev-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-sb-dev-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -3370,7 +3358,7 @@
             "uid": "delasport-dev"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-sb-dev-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-sb-dev-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-sb-dev-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-sb-dev-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  )\r\n)",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -3382,7 +3370,7 @@
             "uid": "delasport-dev"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-sb-dev-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-sb-dev-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -3409,12 +3397,11 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue",
-                "value": null
+                "color": "blue"
               }
             ]
           },
-          "unit": "decgbytes"
+          "unit": "bytes"
         },
         "overrides": [
           {
@@ -3491,7 +3478,7 @@
             "uid": "delasport-dev"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-sb-dev-rpl01\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-sb-dev-rpl01\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -3504,7 +3491,7 @@
             "uid": "delasport-dev"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-sb-dev-rpl01\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-sb-dev-rpl01\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-sb-dev-rpl01\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-sb-dev-rpl01\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  )\r\n)",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -3516,7 +3503,7 @@
             "uid": "delasport-dev"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-sb-dev-rpl01\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-sb-dev-rpl01\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -3543,12 +3530,11 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue",
-                "value": null
+                "color": "blue"
               }
             ]
           },
-          "unit": "decgbytes"
+          "unit": "bytes"
         },
         "overrides": [
           {
@@ -3625,7 +3611,7 @@
             "uid": "delasport-dev"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-psa-dev-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-psa-dev-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -3638,7 +3624,7 @@
             "uid": "delasport-dev"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-psa-dev-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-psa-dev-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-psa-dev-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-psa-dev-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) \r\n)",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -3650,7 +3636,7 @@
             "uid": "delasport-dev"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-psa-dev-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-psa-dev-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -3677,12 +3663,11 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue",
-                "value": null
+                "color": "blue"
               }
             ]
           },
-          "unit": "decgbytes"
+          "unit": "bytes"
         },
         "overrides": [
           {
@@ -3759,7 +3744,7 @@
             "uid": "delasport-dev"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-gamification-dev-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-dela-gamification-dev-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -3772,7 +3757,7 @@
             "uid": "delasport-dev"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-gamification-dev-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-gamification-dev-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-dela-gamification-dev-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-dela-gamification-dev-src\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  )\r\n)",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -3784,7 +3769,7 @@
             "uid": "delasport-dev"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-gamification-dev-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-dela-gamification-dev-src\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -3811,12 +3796,11 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue",
-                "value": null
+                "color": "blue"
               }
             ]
           },
-          "unit": "decgbytes"
+          "unit": "bytes"
         },
         "overrides": [
           {
@@ -3893,7 +3877,7 @@
             "uid": "delasport-dev"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-tms-dev\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_size_bytes{\r\n    instance=~\"db-tms-dev\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -3906,7 +3890,7 @@
             "uid": "delasport-dev"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-tms-dev\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-tms-dev\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  ) / 1024 / 1024 / 1024\r\n)",
+          "expr": "avg by (instance) (\r\n  (\r\n    node_filesystem_size_bytes{\r\n      instance=~\"db-tms-dev\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    } \r\n    - \r\n    node_filesystem_free_bytes{\r\n      instance=~\"db-tms-dev\",\r\n      fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n      mountpoint=\"/var/lib/mysql\"\r\n    }\r\n  )\r\n)",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -3918,7 +3902,7 @@
             "uid": "delasport-dev"
           },
           "editorMode": "code",
-          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-tms-dev\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  } / 1024 / 1024 / 1024\r\n)\r\n",
+          "expr": "avg by (instance) (\r\n  node_filesystem_free_bytes{\r\n    instance=~\"db-tms-dev\",\r\n    fstype!~\"rootfs|selinuxfs|autofs|rpc_pipefs|tmpfs|shm|overlay|squashfs\",\r\n    mountpoint=\"/var/lib/mysql\"\r\n  }\r\n)\r\n",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -3946,6 +3930,6 @@
   "timezone": "browser",
   "title": "MySQL Data Directory Disk Usage 2.0",
   "uid": "fe77afkzevmyof214dsafcsq",
-  "version": 28,
+  "version": 35,
   "weekStart": ""
 }
